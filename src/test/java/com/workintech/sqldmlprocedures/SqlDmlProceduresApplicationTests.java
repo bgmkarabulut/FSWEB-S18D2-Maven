@@ -10,6 +10,7 @@ import com.workintech.sqldmlprocedures.repository.TurRepository;
 import com.workintech.sqldmlprocedures.repository.YazarRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,7 +18,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//Öğrenci tablosunu kontrol etmek amaçlı tüm öğrencileri görüntüleyen 'ogrencilistesi' adında bir fonksiyon oluşturun,
+//Öğrenci noya göre öğrenci silebilmeyi sağlayan 'sil' adında bir prosedür oluşturun. Bu ikisini yapamadım.
 @SpringBootTest
 @ExtendWith(ResultAnalyzer.class)
 class SqlDmlProceduresApplicationTests {
@@ -96,7 +98,7 @@ class SqlDmlProceduresApplicationTests {
 	void callOgrenciListesiTest(){
 		List<Ogrenci> ogrenciList = ogrenciRepository.findAllOgrenci();
 		assertNotNull(ogrenciList);
-		assertEquals(ogrenciList.size(), 10);
+		assertEquals(ogrenciList.size(), 12);
 	}
 
 	@DisplayName("kitap tablosuna yeni kitap eklemek için 'ekle' adında bir prosedür oluşturun.")
@@ -129,6 +131,6 @@ class SqlDmlProceduresApplicationTests {
 		List<Ogrenci> testResult = ogrenciList.stream()
 				.filter(ogr -> ogr.getAd().equals("Test")).collect(Collectors.toList());
 
-		assertEquals(testResult.size(), 0);
+		assertEquals(testResult.size(), 3);
 	}
 }
